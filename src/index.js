@@ -20,15 +20,29 @@ class ModuleItem extends React.Component {
 }
 
 class ModuleList extends React.Component {
+
+	constructor() {
+		super();
+		this.state = {
+			modules: [
+				{title: "Module 1"},
+				{title: "Module 2"},
+				{title: "Module 3"},
+				{title: "Module 4"}
+			]
+		}
+	}
+
 	render() {
 		return (
 			<div>
 				<h1>Module List</h1>
 				<ul className="list-group">
-					<ModuleItem title="Module 1"/>
-					<ModuleItem title="Module 2"/>
-					<ModuleItem title="Module 3"/>
-					<ModuleItem title="Module 4"/>
+					{
+						this.state.modules.map(
+							(module, i) => <ModuleItem key={i} title={module.title} />
+						)
+					}
 				</ul>
 			</div>
 		)
