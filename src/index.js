@@ -5,6 +5,15 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import LessonTabs from './LessonTabs'
 import TopicPills from './TopicPills'
 
+const ModuleListItemStateLess = ({title}) => 
+		<li className="list-group-item">
+			{title} (Stateless)
+			<span className="float-right">
+				<i style={{"marginRight":"5px"}} className="fa fa-trash"></i>
+				<i className="fa fa-pencil"></i>
+			</span>
+		</li>
+
 class ModuleItem extends React.Component {
 	render() {
 		return (
@@ -40,7 +49,7 @@ class ModuleList extends React.Component {
 				<ul className="list-group">
 					{
 						this.state.modules.map(
-							(module, i) => <ModuleItem key={i} title={module.title} />
+							(module, i) => <ModuleListItemStateLess key={i} title={module.title} />
 						)
 					}
 				</ul>
