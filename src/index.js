@@ -4,6 +4,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import LessonTabs from './LessonTabs'
 import TopicPills from './TopicPills'
+import CourseList from './containers/CourseList'
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 
 const ModuleListItemStateLess = ({title}) => 
 		<li className="list-group-item">
@@ -63,6 +65,7 @@ class ModuleList extends React.Component {
 	}
 
 	render() {
+
 		return (
 			<div>
 				<h1>Module List</h1>
@@ -95,20 +98,26 @@ class CourseCard extends React.Component {
 	}
 }
 
+class App extends React.Component {
+	render() {
+		return(
+			<Router>
+				<div>
+					<Link to="/whiteboard">White</Link>
+					<Route path="/whiteboard" component={WhiteBoard} />
+				</div>
+			</Router>
+		);
+	}
+}
+
 class WhiteBoard extends React.Component {
 	render() {
 		return (
 			<div className="container-fluid">
+				<App/>
 				<h1>Whiteboard</h1>
-				<TopicPills/>
-				<LessonTabs/>
-				<ModuleList/>
-				<div className="card-deck">
-					<CourseCard/>
-					<CourseCard/>
-					<CourseCard/>
-					<CourseCard/>
-				</div>
+				<CourseList/>
 			</div>
 		)
 	}
