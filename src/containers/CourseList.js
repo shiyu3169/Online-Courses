@@ -1,9 +1,22 @@
 import React from 'react';
-import CourseRow from './CourseRow'
+import CourseRow from './CourseRow';
+import CourseService from '../services/CourseService';
+
 class CourseList extends React.Component {
 	constructor() {
 		super();
+		this.courseService = CourseService.instance;
+		this.state = {courses: []};
 	}
+
+	componentDidMount() {
+
+	    this.courseService.findAllCourses().then(
+	        courses => {
+	            this.setState({courses: courses});
+            }
+        );
+    }
 
 	render() {
 		return (
@@ -16,11 +29,11 @@ class CourseList extends React.Component {
 						</tr>
 					</thead>
 					<tbody>
-						<CourseRow/>
-                        <CourseRow/>
-                        <CourseRow/>
-                        <CourseRow/>
-                        <CourseRow/>
+                    {
+                        this.state.courses.map((course, i) =>
+                            <CourseRow key={i} course={course}/>
+                        )
+                    }
 					</tbody>
 				</table>
 			</div>
