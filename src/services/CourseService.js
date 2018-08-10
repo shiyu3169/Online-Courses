@@ -3,6 +3,14 @@ let _singleton = Symbol();
 class CourseService {
     COURSE_API_URL = "http://localhost:8080/api/course"
 
+    findCourseById(courseId) {
+        return fetch(this.COURSE_API_URL + '/' + courseId).then(
+            function(res) {
+                return res.json()
+            }
+        );
+    }
+
     findAllCourses() {
         return fetch(this.COURSE_API_URL).then(
             function(res) {

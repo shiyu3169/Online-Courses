@@ -1,6 +1,6 @@
 import React from 'react';
 import CourseRow from './CourseRow';
-import CourseService from '../services/CourseService';
+import CourseService from '../../services/CourseService';
 
 class CourseList extends React.Component {
 	constructor() {
@@ -9,7 +9,7 @@ class CourseList extends React.Component {
 		this.state = {
 		    courses: [],
             newCourse: {}
-		};
+		}
 	}
 
 	componentDidMount() {
@@ -18,7 +18,7 @@ class CourseList extends React.Component {
 	        courses => {
 	            this.setState({courses: courses});
             }
-        );
+        )
     }
 
     formChanged = (e) => {
