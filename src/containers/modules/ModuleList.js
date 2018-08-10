@@ -1,30 +1,31 @@
 import React from "react";
+import LessonTabs from "../lessons/LessonTabs";
 
 export default class ModuleList extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            title: '',
-            modules: [
-                {title: "Module 1"},
-                {title: "Module 2"},
-                {title: "Module 3"},
-                {title: "Module 4"}
-            ]
+            selectedModuleIndex: 0
         }
     }
-
-    titleChanged = (e) => {
-        // console.log(e.target.value);
-        this.setState({title: e.target.value});
+    // Change state of the select module
+    selectModule = (i) => {
+        this.setState({
+            selectedModuleIndex: i
+        })
     }
 
-    createModule = () => {
-        const module = {title: this.state.title};
-        this.state.modules.push(module);
-        this.setState({modules: this.state.modules});
-    }
+    // titleChanged = (e) => {
+    //     // console.log(e.target.value);
+    //     this.setState({title: e.target.value});
+    // }
+    //
+    // createModule = () => {
+    //     const module = {title: this.state.title};
+    //     this.state.modules.push(module);
+    //     this.setState({modules: this.state.modules});
+    // }
 
     // renderModuleList() {
     //     let modules =
@@ -38,16 +39,16 @@ export default class ModuleList extends React.Component {
 
         return (
             <div>
-                <h1>Module List</h1>
-                <h2>{this.state.title}</h2>
-                <input className="form-control" placeholder="title" onChange={this.titleChanged}/>
-                <button onClick={this.createModule} className="btn btn-primary btn-block">Add Module</button>
+                <h3>Module List</h3>
+                {/*<h2>{this.state.title}</h2>*/}
+                {/*<input className="form-control" placeholder="title" onChange={this.titleChanged}/>*/}
+                {/*<button onClick={this.createModule} className="btn btn-primary btn-block">Add Module</button>*/}
                 <ul className="list-group">
-                    {
-                        // this.renderModuleList()
-                        <h1>123</h1>
-                    }
+                    {this.props.course.modules.map((module, i) => {
+                        return <li onClick={() => this.selectModule(i)} className="list-group-item" key={i}>{module.title}</li>
+                    })}
                 </ul>
+                <LessonTabs module={this.props.course.modules[this.state.selectedModuleIndex]}/>
             </div>
         )
     }

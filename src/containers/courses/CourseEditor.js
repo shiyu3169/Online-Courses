@@ -8,7 +8,17 @@ export default class CourseEditor extends React.Component {
         super(props);
         this.service = CourseService.instance;
         this.state = {
-            course: {}
+            course: {
+                modules: [{
+                    title: '',
+                    lessons: [{
+                        title: '',
+                        topics: [{
+                            title: ''
+                        }]
+                    }]
+                }]
+            }
         }
     }
 
