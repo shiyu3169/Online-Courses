@@ -1,4 +1,5 @@
 import React from 'react'
+import TopicPills from "../topics/TopicPills";
 
 class LessonTabs extends React.Component {
 
@@ -28,7 +29,7 @@ class LessonTabs extends React.Component {
                             )
                     })}
 				</ul>
-                {this.state.selectedLessonIndex}
+                <TopicPills lesson={this.props.module.lessons[this.state.selectedLessonIndex]}/>
 			</div>
 		)
 	}
