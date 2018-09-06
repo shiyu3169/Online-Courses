@@ -15,6 +15,13 @@ export const widgetReducer = (state = initialState, action) => {
                     widget=> widget.id !== action.widgetId
                 )
             }
+        case 'CREATE_WIDGET':
+            return {
+                widgets: [
+                    action.widget,
+                    ...state.widgets
+                ]
+            }
         default:
             return state
     }
