@@ -1,5 +1,5 @@
 import React from 'react'
 
-export const WidgetType3 = () => (
-    <h3>Widget Type 3</h3>
+export const WidgetType3 = ({widget}) => (
+    <h3>Widget Type 3 - {widget.title} - {widget.widgetType}</h3>
 )
