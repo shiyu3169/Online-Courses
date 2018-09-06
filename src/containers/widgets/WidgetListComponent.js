@@ -4,6 +4,7 @@ import { WidgetType2 } from './WidgetType2';
 import { WidgetType3 } from './WidgetType3';
 import { HeadingWidget } from './HeadingWidget';
 import { ListWidget } from './ListWidget';
+import { YouTubeWidget } from './YouTubeWidget';
 
  const WidgetListComponent = ({widgets, deleteWidget, createWidget, updateWidget}) => {
     let widgetTitle; 
@@ -42,6 +43,7 @@ import { ListWidget } from './ListWidget';
                             Delete
                         </button>
                         <div>
+                            {widget.widgetType === 'YOUTUBE' && <YouTubeWidget widget={widget} updateWidget = {updateWidget}/>}
                             {widget.widgetType === 'LIST' && <ListWidget widget={widget} updateWidget = {updateWidget}/>}
                             {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget = {updateWidget} />}
                             {widget.widgetType === 'WT1' && <WidgetType1 widget={widget} updateWidget = {updateWidget} />}

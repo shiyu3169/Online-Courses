@@ -2,6 +2,7 @@ let initialState = {
     widgets: [
         {title: 'Heading Widget 1', id: 1, widgetType: 'HEADING'},
         {title: 'List Widget 1', id: 2, widgetType: 'LIST', listItems: 'item 1\nitem 2\nitem 3', ordered: false},
+        {title: 'YouTube Widget 1', id: 3, widgetType: 'YOUTUBE'},
         {title: 'Widget 1', id: 123, widgetType: 'WT1'},
         {title: 'Widget 2', id: 234, widgetType: 'WT2'},
         {title: 'Widget 3', id: 345, widgetType: 'WT3'},
