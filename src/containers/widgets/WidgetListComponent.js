@@ -2,6 +2,7 @@ import React from 'react'
 import { WidgetType1 } from './WidgetType1';
 import { WidgetType2 } from './WidgetType2';
 import { WidgetType3 } from './WidgetType3';
+import { HeadingWidget } from './HeadingWidget';
 
  const WidgetListComponent = ({widgets, deleteWidget, createWidget, updateWidget}) => {
     let widgetTitle; 
@@ -29,6 +30,7 @@ import { WidgetType3 } from './WidgetType3';
                         <option value="WT1">Widget Type 1</option>
                         <option value="WT2">Widget Type 2</option>
                         <option value="WT3">Widget Type 3</option>
+                        <option value="HEADING">Heading Widget</option>
                     </select>
                 </li>
                 {widgets.map((widget,index)=>
@@ -39,6 +41,7 @@ import { WidgetType3 } from './WidgetType3';
                             Delete
                         </button>
                         <div>
+                            {widget.widgetType === 'HEADING' && <HeadingWidget widget={widget} updateWidget = {updateWidget} />}
                             {widget.widgetType === 'WT1' && <WidgetType1 widget={widget} updateWidget = {updateWidget} />}
                             {widget.widgetType === 'WT2' && <WidgetType2 widget={widget} updateWidget = {updateWidget} />}
                             {widget.widgetType === 'WT3' && <WidgetType3 widget={widget} updateWidget = {updateWidget} />}
