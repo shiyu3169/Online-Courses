@@ -7,7 +7,10 @@ import '../node_modules/font-awesome/css/font-awesome.min.css';
 import CourseList from './containers/courses/CourseList'
 import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 import CourseEditor from "./containers/courses/CourseEditor";
-
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import { widgetReducer } from './reducers/widgetReducer';
+import WidgetListContainer from './containers/widgets/WidgetListContainer';
 // const ModuleListItemStateLess = ({title}) =>
 // 		<li className="list-group-item">
 // 			{title} (Stateless)
@@ -49,16 +52,22 @@ import CourseEditor from "./containers/courses/CourseEditor";
 // 	}
 // }
 
+let store = createStore(widgetReducer)
+
 class App extends React.Component {
 	render() {
 		return(
-			<Router>
-				<div>
-					<Link to="/whiteboard">White</Link>
-					<Route path="/whiteboard" component={WhiteBoard} />
-                    <Route path="/course/:courseId" component={CourseEditor}/>
-				</div>
-			</Router>
+			<Provider store={store}>
+				<Router>
+					<div>
+						<Link to="/whiteboard">White</Link> |
+						<Link to="/widgets">Widgets</Link>
+						<Route path="/whiteboard" component={WhiteBoard} />
+						<Route path="/course/:courseId" component={CourseEditor}/>
+						<Route path="/widgets" component={WidgetListContainer}/>
+					</div>
+				</Router>
+			</Provider>
 		);
 	}
 }
