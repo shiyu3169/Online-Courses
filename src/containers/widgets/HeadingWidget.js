@@ -13,7 +13,7 @@ export const HeadingWidget = ({widget, updateWidget}) => {
             <label htmlFor="size">Heading Size</label>
             <select onChange = {
                 () => {
-                    widget.size = size.value;
+                    widget.size = parseInt(size.value);
                     updateWidget(widget)
                 }
             } ref={(node) => size = node} className="form-control" id="size">
