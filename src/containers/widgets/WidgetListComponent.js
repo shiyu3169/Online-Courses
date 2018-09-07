@@ -11,6 +11,7 @@ import { YouTubeWidget } from './YouTubeWidget';
          super(props)
          let widgetTitle; 
          let widgetType;
+         this.props.loadAllWidgets()
      }
      render() {
         return (
