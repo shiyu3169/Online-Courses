@@ -3,6 +3,9 @@ let initialState = {
 };
 
 export const widgetReducer = (state = initialState, action) => {
+
+    let fromIndex, toIndex;
+
     switch(action.type) {
         case 'DELETE_WIDGET':
             return {
@@ -43,6 +46,18 @@ export const widgetReducer = (state = initialState, action) => {
             return {
                 widgets: action.widgets
             }
+        case 'UP':
+            console.log(action.widgetId + 'going up')
+            fromIndex = state.widgets.findIndex((widget)=> widget.id === action.widgetId)
+            toIndex = fromIndex--;
+            state.widgets.splice(toIndex, 0, state.widgets.splice(fromIndex, 1)[0]);
+            console.log(state.widgets);
+            return {
+                widgets: state.widgets
+            }
+        case 'DOWN':
+            console.log(action.widgetId + 'going Down')
+            return state;
         default:
             return state
     }

@@ -9,10 +9,12 @@ import { YouTubeWidget } from './YouTubeWidget';
  class WidgetListComponent extends React.Component {
      constructor(props) {
          super(props)
-         let widgetTitle; 
-         let widgetType;
+        //  let widgetTitle; 
+        //  let widgetType;
          this.props.loadAllWidgets()
      }
+
+     
      render() {
         return (
             <div>
@@ -44,6 +46,9 @@ import { YouTubeWidget } from './YouTubeWidget';
                     {this.props.widgets.map((widget,index)=>
                         <li className="list-group-item" key={index}>
                             {widget.title} ({widget.id}) - {widget.widgetType}
+                            <button onClick={() => this.props.up(widget.id)} className="float-right btn btn-warning">Up</button>
+                            <button onClick={() => this.props.down(widget.id)} className="float-right btn btn-warning">Down</button>
+
                             <button className="btn btn-danger float-right" 
                                     onClick={() => this.props.deleteWidget(widget.id)}>
                                 Delete
